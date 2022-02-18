@@ -5,7 +5,7 @@
 // => WANDEL ITEM IN HTML UM => konvertiere einen String in einen anderen!
 // => Zeige HTML STRING im Browser an
 
-const arrPizzas = [ 'Hawaii', 'Funghi', 'Margeritha', 'Spinat', 'Garnelen' ]; // item = "Hawaii"
+// const arrPizzas = [ 'Hawaii', 'Funghi', 'Margeritha', 'Spinat', 'Garnelen' ]; // item = "Hawaii"
 
 // LOOPE über pizzas
 
@@ -36,27 +36,35 @@ const arrPizzas = [ 'Hawaii', 'Funghi', 'Margeritha', 'Spinat', 'Garnelen' ]; //
 //    - b) replace Array durch nur das eine Item
 //    - c) VERSTECKE alle anderen Items irgendwie
 
+const arrPizzas = [ 'Hawaii', 'Funghi', 'Margeritha', 'Spinat', 'Garnelen' ]; // item = "Hawaii"
+
+
 const searchTermInPizzas = ( searchWord ) => {
 
   // Ich will in der For Loop etwas HERAUSFINDEN
   // Dafür brauche ich die Variable VOR der ForLoop
-  let foundItem = '';
+  let foundItems = []; // mache einen empty box für mehrere items
 
   //  In JEDEM Item wollen wir prüfen, ob Suchwort INCLUDED ist in Title
   for (let pizza of arrPizzas) {
     // "Hawaii".includes("Fung") => false
-    const included = pizza.includes(searchWord);
+    const included = pizza.toUpperCase().includes(searchWord.toUpperCase());
 
     // WENN item gefunden wurde, SPEICHERE es für später
-    if (included == true) {
-      foundItem = pizza;
+    if (included) {
+      foundItems.push( pizza )
     }
   }
-
-  console.log({ foundItem });
+  return foundItems
 };
 
 // USer sucht nach Funghi
-searchTermInPizzas("Funghi")
-searchTermInPizzas("Teriyaki")
-searchTermInPizzas("Marg")
+const log = console.log
+
+log( searchTermInPizzas("Funghi"))
+log( searchTermInPizzas("Teriyaki"))
+log( searchTermInPizzas("Marg")) 
+log( searchTermInPizzas("g"))
+
+
+
